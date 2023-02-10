@@ -1,0 +1,76 @@
+﻿@page "{id}"
+@model Northwind.Web.Pages.AboutCustomerModel
+@using Packt.Shared
+@{
+    Customer c = Model.Customer;
+}
+<style>
+    .card-info,
+    .order-container{
+        margin-top: 30px;
+        margin-left: auto;
+        margin-right: auto;
+        border-style: solid;
+        padding: 10px;
+        border-radius: 30px;
+    }
+
+    .card-info>p{
+        text-align: center;
+    }
+</style>
+<div class="main-container">
+    <h2 align="center">Customer Info</h2>
+    <div class="card-info">
+        <p>
+            Customer ID: @c.CustomerId
+        </p>
+        <p>
+            Contact name: @c.ContactName
+        </p>
+        <p>
+            Contact title: @c.ContactTitle
+        </p>
+        <p>
+            Company mame: @c.CompanyName
+        </p>
+        <p>
+            Address: @c.Address
+        </p>
+        <p>
+            Region: @c.Region
+        </p>
+        <p>
+            PostalCode: @c.PostalCode
+        </p>
+        <p>
+            Country: @c.Country
+        </p>
+        <p>
+            City: @c.City
+        </p>
+        <p>
+            Phone: @c.Phone
+        </p>
+    </div>
+    <h2 align="center">List orders</h2>
+    <div class="list-orders">
+        
+        @if(Model.Orders is not null)
+        {
+            @foreach (Order o in Model.Orders)
+            {
+                <div class="order-container">
+                    <p>OrderId: @o.OrderId</p>
+                    <p>CustomerId: @o.CustomerId</p>
+                    <p>Employee: @o.Employee</p>
+                    <p>OrderDate: @o.OrderDate</p>
+                    <p>RequiredDate: @o.RequiredDate</p>
+                    <p>ShippedDate: @o.ShippedDate</p>
+                    <p>ShipName: @o.ShipName</p>
+                    <p>ShipAddress: @o.ShipAddress</p>
+                </div>
+            }
+        }
+    </div>
+</div>
